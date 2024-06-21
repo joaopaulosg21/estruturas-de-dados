@@ -2,9 +2,10 @@ package arraylist;
 
 import java.util.Arrays;
 
+@SuppressWarnings("unchecked")
 public class ArrayList<T> {
 
-    private Object[] list;
+    private T[] list;
 
     private int size;
 
@@ -13,47 +14,50 @@ public class ArrayList<T> {
     private final int GROWTH_FACTOR = 2;
 
     public ArrayList() {
-        this.list = new Object[INITIAL_LENGTH];
+        this.list = (T[]) new Object[INITIAL_LENGTH];
         this.size = 0;
     }
 
     public void add(T element) {
 
-        if(size == list.length) {
-            list = this.resize();
+        if (size == list.length) {
+            this.resize();
             list[size] = element;
             size++;
-        }else if(list[size] == null) {
+        } else if (list[size] == null) {
             list[size] = element;
             size++;
         }
     }
 
-    public boolean delete(int index) {
-        if(index > size || list[index] == null) {
-            return false;
+    public T deleteAt(int index) {
+        if (index > size || list[index] == null || index < 0) {
+            throw new IllegalArgumentException();
         }
 
+        T element = list[index];
         list[index] = null;
+        size--;
         this.moveArrayToLeft(index);
-        return true;
+        return element;
     }
 
-    public boolean delete(T element) {
-        for(int i=0; i < size;i++) {
-            if(list[i] == element) {
+    public T delete(T element) {
+        T deleted = null;
+        for (int i = 0; i < size; i++) {
+            if (list[i] == element) {
+                deleted = list[i];
                 list[i] = null;
+                size--;
                 this.moveArrayToLeft(i);
-                return true;
             }
         }
 
-        return false;
+        return deleted;
     }
 
-    @SuppressWarnings("unchecked")
     public T get(int index) {
-        if(index > size) {
+        if (index > size) {
             return null;
         }
 
@@ -61,44 +65,52 @@ public class ArrayList<T> {
     }
 
     public void set(int index, T element) {
-        if(index <= size) {
-            list[index] = element;
+        if (index > size || index < 0) {
+            throw new IllegalArgumentException();
         }
+        list[index] = element;
     }
 
     public void clear() {
-        for(int i=0; i < size;i++) {
+        for (int i = 0; i < size; i++) {
             list[i] = null;
         }
+        size=0;
     }
 
     public Object[] toArray() {
         Object[] arr = new Object[size];
-        for(int i=0; i < size;i++) {
+        for (int i = 0; i < size; i++) {
             arr[i] = list[i];
         }
 
         return arr;
     }
 
+    public int size() {
+        return size;
+    }
+
     private void moveArrayToLeft(int index) {
-        for(int i=index; i < size;i++) {
-            list[i] = list[i+1];
+        for (int i = index; i < size - 1; i++) {
+            T temp = (T) list[i + 1];
+            list[i + 1] = list[i];
+            list[i] = temp;
         }
     }
 
-    private Object[] resize() {
-        Object[] newArr = new Object[list.length * GROWTH_FACTOR];
+    private void resize() {
+        T[] newArr = (T[]) new Object[list.length * GROWTH_FACTOR];
 
-        for(int i=0; i < list.length;i++) {
+        for (int i = 0; i < list.length; i++) {
             newArr[i] = list[i];
         }
 
-        return newArr;
+        list = newArr;
     }
 
     @Override
     public String toString() {
-        return "ArrayList [list=" + Arrays.toString(list) + "]";
+        return "ArrayList " + Arrays.toString(list);
     }
 }
