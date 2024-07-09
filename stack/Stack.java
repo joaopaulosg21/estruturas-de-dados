@@ -46,7 +46,7 @@ public class Stack<T> {
 
     public boolean contains(T element) {
         for (Object obj : stack) {
-            if (obj == element) {
+            if (obj.equals(element)) {
                 return true;
             }
         }
