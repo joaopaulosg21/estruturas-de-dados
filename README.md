@@ -12,4 +12,5 @@
 
 - ### [Binary Search Tree](https://github.com/joaopaulosg21/estruturas-de-dados/tree/main/trees/binarysearchtree) 
 
-## [SinglyLinkedList](https://github.com/joaopaulosg21/estruturas-de-dados/tree/main/singlylinkedlist)
+## [LinkedLists](https://github.com/joaopaulosg21/estruturas-de-dados/tree/main/linkedlists)
+- ### [SinglyLinkedList](https://github.com/joaopaulosg21/estruturas-de-dados/tree/main/linkedlists/singlylinkedlist)
