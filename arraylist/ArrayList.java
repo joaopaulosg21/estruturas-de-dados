@@ -11,7 +11,7 @@ public class ArrayList<T> {
 
     private final int INITIAL_LENGTH = 10;
 
-    private final int GROWTH_FACTOR = 2;
+    private final double GROWTH_FACTOR = 1.5;
 
     public ArrayList() {
         this.list = (T[]) new Object[INITIAL_LENGTH];
@@ -31,7 +31,7 @@ public class ArrayList<T> {
     }
 
     public T deleteAt(int index) {
-        if (index > size || list[index] == null || index < 0) {
+        if (index >= size || index < 0) {
             throw new IllegalArgumentException();
         }
 
@@ -75,7 +75,7 @@ public class ArrayList<T> {
         for (int i = 0; i < size; i++) {
             list[i] = null;
         }
-        size=0;
+        size = 0;
     }
 
     public Object[] toArray() {
@@ -92,15 +92,15 @@ public class ArrayList<T> {
     }
 
     private void moveArrayToLeft(int index) {
-        for (int i = index; i < size - 1; i++) {
-            T temp = (T) list[i + 1];
+        for (int i = index; i < size; i++) {
+            T temp = list[i + 1];
             list[i + 1] = list[i];
             list[i] = temp;
         }
     }
 
     private void resize() {
-        T[] newArr = (T[]) new Object[list.length * GROWTH_FACTOR];
+        T[] newArr = (T[]) new Object[(int)(list.length * GROWTH_FACTOR)];
 
         for (int i = 0; i < list.length; i++) {
             newArr[i] = list[i];

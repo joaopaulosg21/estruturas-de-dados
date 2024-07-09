@@ -1,7 +1,7 @@
 # ArraysLists / Arrays dinamicos
 
 ## Explicação
-- Um arraylist ou arrays dinamicos são basicamente arrays que não tem tamanho fixo ou seja o tamanho do array cresce conforme a necessidade.
+- Um arraylist ou arrays dinamicos são basicamente arrays que não tem tamanho fixo ou seja o tamanho do array cresce conforme a necessidade.OBS: o array pode ser dimensionado a cada elemento novo que ultrapassa o limite inicial ou é possivel definir um “fator de crescimento” que redimensiona o array de acordo com esse fator.
 
 ## Métodos comuns
 
