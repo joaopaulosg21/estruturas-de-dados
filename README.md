@@ -14,3 +14,4 @@
 
 ## [LinkedLists](https://github.com/joaopaulosg21/estruturas-de-dados/tree/main/linkedlists)
 - ### [SinglyLinkedList](https://github.com/joaopaulosg21/estruturas-de-dados/tree/main/linkedlists/singlylinkedlist)
+- ### [DoublyLinkedList](https://github.com/joaopaulosg21/estruturas-de-dados/tree/main/linkedlists/doublylinkedlist)
